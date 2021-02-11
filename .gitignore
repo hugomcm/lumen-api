@@ -1,0 +1,11 @@
+api/*
+!api/app
+!api/routes
+!api/tests
+
+api/app/*
+!api/app/Http
+!api/app/Models
+
+api/app/Http/*
+!api/app/Http/Controllers

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  api-srv:
+    image: 'hugomcm/php-apache-lumen-api'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 'api-lumen'
+    restart: always
+    depends_on: api-db
+    volumes:
+      - .:/app
+    ports:
+      - '8080:80'
+    networks:
+      - localdev
+
+  api-db:
+    image: 'postgres-13.1'
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 'testing123'
+
+networks:
+  localdev:
+    external: true
